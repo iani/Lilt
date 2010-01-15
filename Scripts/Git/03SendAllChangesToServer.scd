@@ -8,9 +8,7 @@ This is configured for Lilt.
 */
 
 ~script.routine {
-	// list all files in the User Application Support Directory of SuperCollider
 	("cd " ++ Platform.userAppSupportDir.replace(" ", "\\ ") ++ "/Extensions/Lilt
-ls -a
 git push").runInTerminal;
 	1.0.wait;
 };
