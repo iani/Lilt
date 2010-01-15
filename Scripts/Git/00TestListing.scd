@@ -4,8 +4,6 @@ Go to user SuperCollider home directory.
 
 This is just a test of String:runInTerminal. 
 
-(Testing a change here. Friday; January 15, 2010: 11:17 AM)
-
 */
 
 
