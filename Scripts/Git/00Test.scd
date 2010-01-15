@@ -6,12 +6,9 @@ This is just a test of String:runInTerminal.
 
 */
 
-~script.routine {
-	("cd " ++ Platform.userAppSupportDir.replace(" ", "\\ ") ++ "\nls").runInTerminal;
-	1.0.wait;
-};
 
 ~script.routine {
+	// list all files in the User Application Support Directory of SuperCollider
 	("cd " ++ Platform.userAppSupportDir.replace(" ", "\\ ") ++ "\nls -a").runInTerminal;
 	1.0.wait;
 };
