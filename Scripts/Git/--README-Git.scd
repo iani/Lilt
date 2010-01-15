@@ -2,7 +2,9 @@
 
 This is a collection of mini-scripts that drive the git code managment tool from the Unix shell / terminal using String:runInTerminal.
 
-Things to try: 
+Once everything has been set up, only one script is needed to update all changes and send them to the server. It is the script named "SendAllChangesToGitHub".
+
+The other scripts are single steps that I tried out and keep here for reference. These are: 
 
 // add changed files interactively
 git add -i
