@@ -22,56 +22,56 @@ This here is a function because we want to keep all its variables inside its loc
 We don't want to mess with any variables in the interpreter, because these are for the user. \
 */\cf2 \
 	\cf4 var\cf2  g, a, midiResponders;\
-	g = \cf4 SCMenuGroup\cf2 (\cf4 nil\cf2 , \cf5 "User Menu, 10);\
+	g = \cf4 SCMenuGroup\cf2 (\cf4 nil\cf2 , \cf5 "User Menu"\cf2 , 10);\
 \pard\pardeftab560\ql\qnatural
-\cf5 	a = SCMenuItem(g, "\cf2 open startup file\cf5 ");\
-	a.action = \{ (Platform.userAppSupportDir ++ "\cf2 /startup.rtf\cf5 ").openTextFile; \};\
-	a.setShortCut("\cf2 s\cf5 ", true, true); // Cmd-ctrl-alt-s\
+\cf2 	a = \cf4 SCMenuItem\cf2 (g, \cf5 "open startup file"\cf2 );\
+	a.action = \{ (\cf4 Platform\cf2 .userAppSupportDir ++ \cf5 "/startup.rtf"\cf2 ).openTextFile; \};\
+	a.setShortCut(\cf5 "s"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-ctrl-alt-s\cf2 \
 	\
-	f = \{ | server, name, startcolor, donecolor |\
-		var w;\
-		w = Window(name ++ "\cf2  server booting!\cf5 ", Rect(0, 0, 300, 400));\
+	f = \{ \cf4 | server, name, startcolor, donecolor |\cf2 \
+		\cf4 var\cf2  w;\
+		w = \cf4 Window\cf2 (name ++ \cf5 " server booting!"\cf2 , \cf4 Rect\cf2 (0, 0, 300, 400));\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf5 		w.front.view.background = startcolor;\
+\cf2 		w.front.view.background = startcolor;\
 		server.doWhenBooted(\{\
 \pard\pardeftab560\ql\qnatural
-\cf5 			w.name = name ++ "\cf2  server booted\cf5 ";\
+\cf2 			w.name = name ++ \cf5 " server booted"\cf2 ;\
 			w.view.background = donecolor;\
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab560\ql\qnatural\pardirnatural
-\cf5 			\{ w.close \}.defer(1.5);\
+\cf2 			\{ w.close \}.defer(1.5);\
 		\});\
 		if (server.serverRunning.not) \{ server.boot \}\
 \pard\pardeftab560\ql\qnatural
-\cf5 	\};\
+\cf2 	\};\
 	\
-	a = SCMenuItem(g, "\cf2 boot local server\cf5 ");\
-	a.action = \{ f.(Server.local, "\cf4 Local\cf5 ", Color.white, Color.red) \};\
-	a.setShortCut("\cf2 l\cf5 ", true, true); // Cmd-ctrl-alt-l\
-	a = SCMenuItem(g, "\cf2 quit local server\cf5 ");\
-	a.action = \{ Server.local.quit \};\
-	a.setShortCut("\cf2 l\cf5 ", true); //////  // Cmd-alt-l\
-	a = SCMenuItem(g, "\cf2 boot internal server\cf5 ");\
-	a.action = \{ f.(Server.internal, "\cf4 Internal\cf5 ", Color.black, Color.green) \};\
-	a.setShortCut("\cf2 i\cf5 ", true, true); // Cmd-ctrl-alt-i\
-	a = SCMenuItem(g, "\cf2 quit internal server\cf5 ");\
-	a.action = \{ Server.internal.quit \};\
-	a.setShortCut("\cf2 i\cf5 ", true); // Cmd-alt-i\
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "boot local server"\cf2 );\
+	a.action = \{ f.(\cf4 Server\cf2 .local, \cf5 "Local"\cf2 , \cf4 Color\cf2 .white, \cf4 Color\cf2 .red) \};\
+	a.setShortCut(\cf5 "l"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-ctrl-alt-l\cf2 \
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "quit local server"\cf2 );\
+	a.action = \{ \cf4 Server\cf2 .local.quit \};\
+	a.setShortCut(\cf5 "l"\cf2 , \cf4 true\cf2 ); \cf3 //////  // Cmd-alt-l\cf2 \
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "boot internal server"\cf2 );\
+	a.action = \{ f.(\cf4 Server\cf2 .internal, \cf5 "Internal"\cf2 , \cf4 Color\cf2 .black, \cf4 Color\cf2 .green) \};\
+	a.setShortCut(\cf5 "i"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-ctrl-alt-i\cf2 \
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "quit internal server"\cf2 );\
+	a.action = \{ \cf4 Server\cf2 .internal.quit \};\
+	a.setShortCut(\cf5 "i"\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-alt-i\cf2 \
 	\
-	a = SCMenuItem(g, "\cf2 reread help directory from disk\cf5 ");\
-	a.action = \{ Help.updateTree; \};\
-	a.setShortCut("\cf2 r\cf5 ", true, true); // Cmd-ctrl-alt-r\
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "reread help directory from disk"\cf2 );\
+	a.action = \{ \cf4 Help\cf2 .updateTree; \};\
+	a.setShortCut(\cf5 "r"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-ctrl-alt-r\cf2 \
 	\
-	a = SCMenuItem(g, "\cf2 post work sound root directory\cf5 ");\
-	a.action = \{ (Platform.userAppSupportDir ++ "\cf2 /sounds/\cf5 ").asCompileString.postln; \};\
-	a.setShortCut("\cf4 S\cf5 ", true, true); // Cmd-ctrl-alt-S\
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "post work sound root directory"\cf2 );\
+	a.action = \{ (\cf4 Platform\cf2 .userAppSupportDir ++ \cf5 "/sounds/"\cf2 ).asCompileString.postln; \};\
+	a.setShortCut(\cf5 "S"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // Cmd-ctrl-alt-S\cf2 \
 	\
-	a = SCMenuItem(g, "\cf6 'load buffers by code'\cf2  dialog\cf5 ");\
+	a = \cf4 SCMenuItem\cf2 (g, \cf5 "'load buffers by code' dialog"\cf2 );\
 	a.action = \{\
-		CocoaDialog.getPaths(\{ | paths |\
-			"\cf2 (\
-	b = [\cf5 ".postln;\
-			paths do: \{ | p |\
-				postf("\cf6 \\t\cf2  \\\cf5 "%\\",\\n"\cf2 , p);\
+		\cf4 CocoaDialog\cf2 .getPaths(\{ \cf4 | paths |\cf2 \
+			\cf5 "(\
+	b = ["\cf2 .postln;\
+			paths do: \{ \cf4 | p |\cf2 \
+				postf(\cf5 "\\t \\"%\\",\\n"\cf2 , p);\
 			\};\
 			\cf5 "] collect: Buffer.readChannel(Server.default, _, channels: [0], action: _.updateInfo);\
 	)"\cf2 .postln;\
@@ -141,22 +141,22 @@ We don't want to mess with any variables in the interpreter, because these are f
 	by sending it the current state of the Lilt folder from the present computer. */\cf2 \
 	a = \cf4 SCMenuItem\cf2 (g, \cf5 "Update Lilt Project on GitHub"\cf2 );\
 	a.action = \{\
-		\cf0 TextDialog("Enter password:", "???????????", \{ | ok, answer |\
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
-\cf0 	if (ok) \{\
-		if (answer == Archive.global[\\passwd]) \{\
-			("cd " ++ Platform.userAppSupportDir.replace(" ", "\\\\ ") ++ "/Extensions/Lilt\
-git add .\
-git commit -a\
-git push"\
-			).runInTerminal;\
-		\}\{\
-			"Sorry, wrong password".postln;\
-		\}\
-	\}\
-\});\
-\pard\pardeftab560\ql\qnatural
-\cf2 \
+		\cf4 TextDialog\cf2 (\cf5 "Enter password:"\cf2 , \cf5 "???????????"\cf2 , \{ \cf4 | ok, answer |\cf2 \
+			\cf4 var\cf2  userdir, liltdir;\
+			userdir = \cf4 Platform\cf2 .userAppSupportDir.replace(\cf5 " "\cf2 , \cf5 "\\\\ ");\
+			liltdir = userdir ++ "\cf2 /\cf4 Extensions\cf2 /\cf4 Lilt\cf5 ";\
+			if (ok) \{\
+				if (answer == Archive.global[\\passwd]) \{					(\
+				"\cf2 cp \cf5 " ++ userdir ++ "\cf2 /startup.rtf \cf5 " ++ liltdir ++ "\cf2 /\
+				cd \cf5 " ++ liltdir ++ "\cf2 \
+				git add .\
+				git commit -a\
+				git push\cf5 "\cf2 ).runInTerminal;\
+				\}\{\
+					\cf5 "Sorry, wrong password"\cf2 .postln;\
+				\}\
+			\}\
+		\});\
 	\};\
 	a.setShortCut(\cf5 "g"\cf2 , \cf4 true\cf2 , \cf4 true\cf2 ); \cf3 // cmd-alt-ctrl-g\cf2 \
 \
@@ -174,7 +174,10 @@ git push"\
 \
 \cf3 //  =======================================================================\cf2 \
 \
-\cf4 DocTop\cf2 .start;\
+\cf3 // If DocTop class is present, then start DocTop\cf2 \
+if (\cf4 Class\cf2 .allClasses.collect(\cf4 _\cf2 .name) includes: \cf6 \\DocTop\cf2 ) \{ \cf4 DocTop\cf2 .start \};\
+\
+// Boot local server\
 \cf4 Server\cf2 .local.boot;\
 \
 \
