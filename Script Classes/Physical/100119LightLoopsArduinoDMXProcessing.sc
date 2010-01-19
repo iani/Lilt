@@ -14,9 +14,16 @@ LightLoops.test;
 LightLoops.start;
 
 // Then simulate the messages sent by Processing. 
-// For this, try any of the messages below, in any order: 
+// For this, try any of the messages below, in any order, ager having started LightLoops: 
+NetAddr.localAddr.sendMsg('/test', 0, 100, 300, 50, 0);
+NetAddr.localAddr.sendMsg('/test', 0, 500, 300, 50, 0);
+NetAddr.localAddr.sendMsg('/test', 0, 0, 0, 0, 40);
+NetAddr.localAddr.sendMsg('/test', 0, 0, 0, 0, 10);
+/// etc.
 
+To stop everything: 
 
+LightLoops.stop;
 
 */
 
@@ -104,9 +111,6 @@ LightLoops {
 		} ! 5;
 	}
 
-	sendDmxColor { | r, g, b, brightness |
-		
-	}
 	*start { this.default.start; }
 	start { oscResponder.add; }
 	*stop { this.default.stop; }
