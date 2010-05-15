@@ -3,7 +3,7 @@ Enable consistent loading and reloading and allocation of buffers. Make buffers 
 
 This class was started to clear up problems with buffer allocation at startup that were encountered with Samples, by refactoring all buffer loading methods out of Samples and of Script. 
 
-As of 080619 no progress is made, so I should take up this again some time later. 
+As of 080619 no progress is made, so I should take up this again some time later. ...
 
 */
 
